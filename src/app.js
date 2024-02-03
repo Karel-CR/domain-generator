@@ -3,34 +3,33 @@ window.onload = function() {
   let pronoun = ["the", "our"];
   let adj = ["great", "big"];
   let noun = ["jogger", "racoon"];
-  let domain = "com";
-  //Llamamos a la función correspondiente (Quiero que la funcion generateDomainCombinations() se cargué lo antes posible)
-  function generateDomainCombinations(pronoun, adj, noun, domain) {
-    let auxArray = [""];
-    let errorArray = [];
-    pronoun.forEach(element => {
-      if (auxArray[element] != pronoun) {
-        auxArray.push(pronoun[element]);
-      }
-      if (auxArray[element] != adj) {
-        auxArray[element + 1].push(adj[element]);
-        if (auxArray[element] != noun) {
-          auxArray[element + 2].push(noun[element]);
+  let domain = ["com","es"];
+  //Accedemos al span por id
+  let elementDomain = document.getElementById("dominio");
+  //Control. Verificamos si el elemento se ha encontrado
+  if (elementDomain) {
+    //Aquí generaremos todas las opciones posibles, para ello haremos un bucle anidado
+    for (let i = 0; i < pronoun.length; i++) {
+      for (let j = 0; j < adj.length; j++) {
+        for (let k = 0; k < noun.length; k++) {
+          for (let l = 0; l < domain.length; l++) {
+            let completeDomain = pronoun[i] + adj[j] + noun[k]+'.' + domain[l];
+            // Inserta la combinación en el <span>
+            
+            
+
+            let p = document.createElement('p');
+            p.textContent = completeDomain;
+            elementDomain.appendChild(p);
+          }
         }
-        if (auxArray[element] != domain) {
-          auxArray[element + 3].push(domain[element]);
-        } else {
-          errorArray.push(1);
-        }
-        return auxArray;
+        
       }
-    });
-    console.log;
-    let arrayFinal = generateDomainCombinations(pronoun, adj, noun, domain);
-    var dominioElement = document.getElementById("dominio");
-    dominioElement.textContent = arrayFinal;
+      
+    }
+  } else {
+    //Según la documentación de EsLint en estos casos si esta permitido
+    // eslint-disable-next-line no-console 
+    console.log('No se encontró el elemento con el ID "dominio".');
   }
-  //Declaramos un Array para contener los números aleatorios
-  // Concatenamos cadenas
-  // Imprimimos en el index
 };
