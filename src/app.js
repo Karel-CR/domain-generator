@@ -15,15 +15,14 @@ window.onload = function() {
           for (let l = 0; l < domain.length; l++) {
             //Creamos una condicion logica para implementar la funcionalidad de hakear el dominio
             //Aqui la condicion de entrada es la siguiente: si las dos ultimas letras del noun son iguales a un dominio entra al siguiente codigo:
-            if (noun[k].slice(-2) === "er") {
+            if (noun[k].slice(-2) === domain[l]) {
               //declaramos la variable del dominio hackeado, en la cual cortamos los ultimos
               let completeDomainHack =
                 pronoun[i] + adj[j] + noun[k].slice(0, -2) + "." + domain[l];
               let p = document.createElement("p");
               p.textContent = completeDomainHack;
               elementDomain.appendChild(p);
-            }
-            if (domain != "er") {
+            } else if (domain != domain[l]) {
               //Generamos la cadena de texto
               let completeDomain =
                 pronoun[i] + adj[j] + noun[k] + "." + domain[l];
