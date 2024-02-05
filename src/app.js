@@ -19,10 +19,11 @@ window.onload = function() {
               //declaramos la variable del dominio hackeado, en la cual cortamos los ultimos
               let completeDomainHack =
                 pronoun[i] + adj[j] + noun[k].slice(0, -2) + "." + domain[l];
+              //Por cada "completeDomainHack" crearemos una etiqueta <p> en el html, de esta manera mostraremos los dominios uno por uno
               let p = document.createElement("p");
               p.textContent = completeDomainHack;
               elementDomain.appendChild(p);
-            } else if (domain != domain[l]) {
+            } else {
               //Generamos la cadena de texto
               let completeDomain =
                 pronoun[i] + adj[j] + noun[k] + "." + domain[l];
